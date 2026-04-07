@@ -1,26 +1,24 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#07090E] text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-200;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Upgraded iOS-style Liquid Glass */
+  .glass-panel {
+    @apply bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-[40px] border border-white/[0.12] shadow-[0_8px_32px_0_rgba(0,0,0,0.4),inset_0_1px_1px_0_rgba(255,255,255,0.1)];
+  }
+
+  /* Architectural Blueprint Grid Background (BRIGHTER VERSION) */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 50%, transparent 100%);
+  }
 }
