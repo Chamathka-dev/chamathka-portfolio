@@ -58,15 +58,16 @@ export default function Navbar() {
         </nav>
 
         {/* 3. Mobile Navigation Controls */}
-        <div className="flex items-center gap-3 sm:gap-4 md:hidden">
-          <Link href="#contact" onClick={() => setIsOpen(false)} className="px-4 py-2 text-[11px] sm:text-xs font-medium rounded-full bg-white/[0.05] border border-white/10 text-white hover:bg-white/10 active:scale-95 active:bg-white/20 transition-all shadow-sm">
+        <div className="flex items-center gap-2 sm:gap-4 md:hidden">
+          {/* THE FIX: Added whitespace-nowrap and slightly adjusted padding */}
+          <Link href="#contact" onClick={() => setIsOpen(false)} className="px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs whitespace-nowrap font-medium rounded-full bg-white/[0.05] border border-white/10 text-white hover:bg-white/10 active:scale-95 active:bg-white/20 transition-all shadow-sm">
             Let's Talk
           </Link>
           
           <button 
             type="button"
             onClick={() => setIsOpen(!isOpen)} 
-            className="p-2 -mr-2 text-slate-300 hover:text-white transition-colors focus:outline-none"
+            className="p-1 sm:p-2 -mr-1 sm:-mr-2 text-slate-300 hover:text-white transition-colors focus:outline-none"
             aria-expanded={isOpen}
             aria-label="Toggle menu"
           >

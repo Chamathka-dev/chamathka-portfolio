@@ -83,7 +83,8 @@ export default async function Home() {
         <div className="glass-panel rounded-[2rem] p-8 md:p-16 relative overflow-hidden group/container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 relative z-10 items-center">
             
-            <div className="lg:col-span-7">
+            {/* ---> FIX: Added order-2 lg:order-1 <--- */}
+            <div className="lg:col-span-7 order-2 lg:order-1">
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
                 Bridging the gap between <span className="text-cyan-400">design</span> and <span className="text-purple-400">logic</span>.
               </h3>
@@ -115,8 +116,9 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[320px] aspect-[4/5] group cursor-pointer">
+            {/* ---> FIX: Added order-1 lg:order-2 mb-8 lg:mb-0 <--- */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] group cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-[2rem] blur-xl transition-all duration-500 group-hover:-translate-x-4 group-hover:translate-y-4"></div>
                 <div className="absolute inset-0 border border-white/10 rounded-[2rem] z-10 transition-all duration-500 group-hover:translate-x-4 group-hover:-translate-y-4"></div>
                 <div className="absolute inset-0 rounded-[2rem] overflow-hidden bg-[#0A0D14] border border-white/10 z-20 shadow-2xl">
@@ -141,7 +143,6 @@ export default async function Home() {
         <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">Selected Work</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {projects?.map((project) => (
-            /* ---> ADDED prefetch={false} HERE <--- */
             <Link href={`/projects/${project.slug}`} key={project.id} prefetch={false} className="block group">
               <div className="glass-panel rounded-3xl p-3 md:p-4 h-full transition-all duration-500 hover:-translate-y-2 relative overflow-hidden flex flex-col group-hover:bg-white/[0.05]">
                 <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0D14] mb-5">
@@ -183,7 +184,6 @@ export default async function Home() {
           ))}
         </div>
         <div className="mt-20 flex justify-center">
-          {/* ---> ADDED prefetch={false} HERE <--- */}
           <Link href="/projects" prefetch={false} className="group flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:-translate-y-1.5 transition-all duration-300 text-slate-300 hover:text-white shadow-[0_0_20px_rgba(0,0,0,0.2)]">
             <span className="text-sm font-medium tracking-wide">View All Projects</span>
             <Zap className="w-4 h-4 group-hover:text-cyan-400" />
