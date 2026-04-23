@@ -1,13 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe } from 'lucide-react';
+import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe, Zap } from 'lucide-react';
 import { FiGithub, FiLinkedin, FiFacebook, FiInstagram } from 'react-icons/fi';
 
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
 
-// Force Next.js to always fetch fresh data
+// Force Next.js to always fetch fresh data (Fixes Vercel caching)
 export const dynamic = "force-dynamic";
 
 // 2. Initialize Supabase client
@@ -16,6 +16,7 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function Home() {
+  // 3. Fetch Projects AND Site Settings from Database
   const [projectsResponse, settingsResponse] = await Promise.all([
     supabase
       .from('projects')
@@ -46,7 +47,6 @@ export default async function Home() {
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
       <div id="about" className="relative w-full max-w-5xl mx-auto mt-8 md:mt-12 px-4 md:px-6 z-10">
-        {/* FIX: Changed p-8 to p-6 sm:p-8 md:p-12 */}
         <div className="glass-panel rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-8 items-center">
@@ -65,7 +65,7 @@ export default async function Home() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-3 sm:gap-4 mb-6">
+              <div className="flex flex-wrap gap-3 sm:gap-4 mb-8">
                 <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm">
                   View Projects
                 </a>
@@ -76,16 +76,16 @@ export default async function Home() {
 
               {/* Social Links */}
               <div className="flex items-center gap-3">
-                <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all">
                   <FiLinkedin className="w-5 h-5" />
                 </a>
-                <a href="https://github.com/Chamathka-dev" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all" aria-label="GitHub">
+                <a href="https://github.com/Chamathka-dev" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all">
                   <FiGithub className="w-5 h-5" />
                 </a>
-                <a href="https://web.facebook.com/chamathka.online" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 hover:bg-white/10 transition-all" aria-label="Facebook">
+                <a href="https://web.facebook.com/chamathka.online" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 hover:bg-white/10 transition-all">
                   <FiFacebook className="w-5 h-5" />
                 </a>
-                <a href="https://www.instagram.com/chamathka.addarage" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 hover:bg-white/10 transition-all" aria-label="Instagram">
+                <a href="https://www.instagram.com/chamathka.addarage" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 hover:bg-white/10 transition-all">
                   <FiInstagram className="w-5 h-5" />
                 </a>
               </div>
@@ -93,7 +93,7 @@ export default async function Home() {
 
             {/* Portrait inside the card */}
             <div className="order-1 md:order-2 flex justify-start md:justify-end">
-               <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
+               <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
                  <Image 
                     src={settings?.portrait_url || "/images/portrait.jpg"} 
                     alt="Chamathka Addarage" 
@@ -112,65 +112,63 @@ export default async function Home() {
           ========================================= */}
       <div id="skills" className="relative w-full max-w-5xl mx-auto px-4 md:px-6 mt-16 z-10">
         
-        {/* Section Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-1 w-6 bg-cyan-500 rounded-full"></div>
           <h2 className="text-xl font-bold text-white tracking-wide">Technical Stack</h2>
         </div>
 
-        {/* FIX: Changed p-8 to p-6 md:p-8 */}
         <div className="glass-panel rounded-2xl p-6 md:p-8 border border-white/5 shadow-lg">
-           <p className="text-sm text-slate-400 mb-8 font-light">These are the technologies, tools, and environments I use to build scalable solutions.</p>
+           <p className="text-sm text-slate-400 mb-8 font-light italic">These are the technologies, tools, and environments I use to build scalable solutions.</p>
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              
-              {/* Category 1 */}
-              <div>
+             
+             {/* Category 1 */}
+             <div>
                  <h3 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">Programming & Frameworks</h3>
-                 <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                 <div className="flex flex-wrap gap-2.5">
                    {['React', 'Next.js', 'Node.js', 'Vite', 'JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3', 'PHP', 'Laravel', 'Tailwind CSS', 'Bootstrap'].map(t => (
                      <span key={t} className="bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:border-cyan-500/30 hover:text-cyan-400 hover:bg-cyan-500/5 transition-all cursor-default">
                        {t}
                      </span>
                    ))}
                  </div>
-              </div>
+             </div>
 
-              {/* Category 2 */}
-              <div>
+             {/* Category 2 */}
+             <div>
                  <h3 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">Database & Backend</h3>
-                 <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                 <div className="flex flex-wrap gap-2.5">
                    {['Supabase', 'MySQL', 'PostgreSQL', 'Firebase', 'WordPress'].map(t => (
                      <span key={t} className="bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:border-cyan-500/30 hover:text-cyan-400 hover:bg-cyan-500/5 transition-all cursor-default">
                        {t}
                      </span>
                    ))}
                  </div>
-              </div>
+             </div>
 
-              {/* Category 3 */}
-              <div>
+             {/* Category 3 */}
+             <div>
                  <h3 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">Design & Multimedia</h3>
-                 <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                 <div className="flex flex-wrap gap-2.5">
                    {['UI/UX Design', 'Figma', 'Adobe Photoshop', 'Adobe Illustrator', 'Adobe Premiere Pro', 'Adobe After Effects'].map(t => (
                      <span key={t} className="bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:border-purple-500/30 hover:text-purple-400 hover:bg-purple-500/5 transition-all cursor-default">
                        {t}
                      </span>
                    ))}
                  </div>
-              </div>
+             </div>
 
-              {/* Category 4 */}
-              <div>
+             {/* Category 4 */}
+             <div>
                  <h3 className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-4">Digital Marketing & SEO</h3>
-                 <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                 <div className="flex flex-wrap gap-2.5">
                    {['Google Analytics', 'Sitemap Creation', 'Meta Ads Management', 'Lead Generation', 'Social Media Strategy', 'Technical SEO'].map(t => (
                      <span key={t} className="bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:border-purple-500/30 hover:text-purple-400 hover:bg-purple-500/5 transition-all cursor-default">
                        {t}
                      </span>
                    ))}
                  </div>
-              </div>
+             </div>
 
            </div>
         </div>
@@ -181,7 +179,6 @@ export default async function Home() {
           ========================================= */}
       <div id="projects" className="relative w-full max-w-5xl mx-auto px-4 md:px-6 mt-16 z-10">
         
-        {/* Section Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-1 w-6 bg-cyan-500 rounded-full"></div>
           <h2 className="text-xl font-bold text-white tracking-wide">Selected Work</h2>
@@ -230,7 +227,6 @@ export default async function Home() {
           ))}
         </div>
 
-        {/* RESTORED VIEW ALL PROJECTS BUTTON */}
         <div className="mt-10 flex justify-center">
           <Link href="/projects" prefetch={false} className="px-6 py-2.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all font-medium text-sm">
             View All Projects
@@ -240,54 +236,56 @@ export default async function Home() {
       </div>
 
       {/* =========================================
-          4. CAREER TIMELINE SECTION
+          4. CAREER JOURNEY / TIMELINE
           ========================================= */}
       <div id="experience" className="relative w-full max-w-5xl mx-auto px-4 md:px-6 mt-16 z-10">
         
-        {/* Section Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-1 w-6 bg-cyan-500 rounded-full"></div>
           <h2 className="text-xl font-bold text-white tracking-wide">Journey & Timeline</h2>
         </div>
         
-        {/* FIX: Changed p-8 to p-5 sm:p-8 */}
-        <div className="glass-panel rounded-2xl p-5 sm:p-8 border border-white/5">
+        <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-white/5">
           <div className="relative space-y-10 pl-6 border-l border-white/10 ml-2">
             
+            {/* Entry 1 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)] transition-all"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
               <div className="transition-all duration-300">
-                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 block uppercase tracking-wider w-fit border border-cyan-500/20">May 2024 — Oct 2025</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 uppercase tracking-wider border border-cyan-500/20">May 2024 — Oct 2025</span>
                 <h4 className="text-lg font-bold text-white mb-1">Senior Executive - Web Specialist</h4>
                 <p className="text-sm text-slate-400 font-medium mb-3">Ikman.lk | Colombo, Sri Lanka</p>
                 <p className="text-sm text-slate-500 font-light leading-relaxed max-w-3xl">Engineered high-performance, SEO-friendly web applications using React and Next.js. Developed robust backend services and integrated real-time database and authentication solutions using Node.js and Supabase.</p>
               </div>
             </div>
 
+            {/* Entry 2 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)] transition-all"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
               <div className="transition-all duration-300">
-                <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 block uppercase tracking-wider w-fit border border-purple-500/20">Aug 2022 — Mar 2024</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 uppercase tracking-wider border border-purple-500/20">Aug 2022 — Mar 2024</span>
                 <h4 className="text-lg font-bold text-white mb-1">Full Stack Developer</h4>
                 <p className="text-sm text-slate-400 font-medium mb-3">Precision Enterprises Inc | New York, USA</p>
                 <p className="text-sm text-slate-500 font-light leading-relaxed max-w-3xl">Led the end-to-end development and redesign of the company website, significantly increasing user engagement and SEO rankings. Developed and maintained custom full-stack web applications.</p>
               </div>
             </div>
 
+            {/* Entry 3 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)] transition-all"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
               <div className="transition-all duration-300">
-                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 block uppercase tracking-wider w-fit border border-cyan-500/20">Jun 2021 — Jul 2022</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 uppercase tracking-wider border border-cyan-500/20">Jun 2021 — Jul 2022</span>
                 <h4 className="text-lg font-bold text-white mb-1">Social Media Strategist</h4>
                 <p className="text-sm text-slate-400 font-medium mb-3">Lyceum International Schools | Nugegoda, Sri Lanka</p>
                 <p className="text-sm text-slate-500 font-light leading-relaxed max-w-3xl">Developed cross-platform social media strategies to increase brand visibility. Tracked performance metrics using Google Analytics and social insights to optimize future strategies.</p>
               </div>
             </div>
 
+            {/* Entry 4 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)] transition-all"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
               <div className="transition-all duration-300">
-                <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 block uppercase tracking-wider w-fit border border-purple-500/20">Jan 2019 — Present</span>
+                <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 uppercase tracking-wider border border-purple-500/20">Jan 2019 — Present</span>
                 <h4 className="text-lg font-bold text-white mb-1">Web Developer, SEO / Marketing Specialist</h4>
                 <p className="text-sm text-slate-400 font-medium mb-3">Freelance</p>
                 <p className="text-sm text-slate-500 font-light leading-relaxed max-w-3xl">Architected and deployed custom web applications and administrative dashboards using Next.js, React, and Supabase. Boosted organic traffic for global clients by conducting comprehensive SEO audits.</p>
@@ -303,17 +301,15 @@ export default async function Home() {
           ========================================= */}
       <div id="contact" className="relative w-full max-w-5xl mx-auto px-4 md:px-6 mt-16 z-10">
         
-        {/* Section Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-1 w-6 bg-cyan-500 rounded-full"></div>
           <h2 className="text-xl font-bold text-white tracking-wide">Initiate a Project</h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           
           <div className="lg:col-span-2 flex flex-col gap-6">
-            {/* FIX: Changed p-8 to p-6 md:p-8 */}
-            <div className="glass-panel rounded-2xl p-6 md:p-8 h-full flex flex-col justify-center relative overflow-hidden border border-white/5 shadow-lg">
+            <div className="glass-panel rounded-2xl p-6 md:p-8 h-full flex flex-col justify-center border border-white/5 shadow-lg">
               <h3 className="text-xl font-bold text-white mb-2">Let's talk directly.</h3>
               <p className="text-slate-400 text-sm font-light mb-8">Skip the form. Send me a message on WhatsApp for the fastest response.</p>
               
@@ -327,13 +323,12 @@ export default async function Home() {
               </a>
             </div>
 
-            {/* FIX: Changed p-6 to p-5 sm:p-6 */}
-            <div className="glass-panel rounded-2xl p-5 sm:p-6 flex items-center gap-4 border border-white/5 shadow-lg">
+            <div className="glass-panel rounded-2xl p-5 flex items-center gap-4 border border-white/5 shadow-lg">
               <div className="p-3 bg-purple-500/10 rounded-xl">
                 <Mail className="w-5 h-5 text-purple-400" />
               </div>
               <div className="overflow-hidden">
-                <p className="text-xs text-slate-500 font-medium mb-1 uppercase tracking-wider">Email directly at</p>
+                <p className="text-[10px] text-slate-500 font-medium mb-1 uppercase tracking-wider">Email directly at</p>
                 <a href={`mailto:${settings?.contact_email}`} className="text-white hover:text-cyan-400 transition-colors text-sm font-medium truncate block">
                   {settings?.contact_email}
                 </a>
@@ -341,7 +336,6 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* FIX: Changed p-8 md:p-10 to p-6 sm:p-8 md:p-10 */}
           <div className="lg:col-span-3 glass-panel rounded-2xl p-6 sm:p-8 md:p-10 border border-white/5 shadow-lg">
             <h3 className="text-xl font-bold text-white mb-6">Send an Inquiry</h3>
             <ContactForm /> 
