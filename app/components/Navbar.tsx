@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image"; 
 import { Menu, X } from "lucide-react"; 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -25,53 +26,68 @@ export default function Navbar() {
   }
 
   return (
-    // FIX 1: Added w-full and px-4 for mobile safety
-    <header className="fixed top-4 md:top-8 left-0 right-0 w-full px-4 z-[100] flex justify-center pointer-events-none">
-      
-      {/* FIX 2: Added pointer-events-auto so clicks work on the pill, but space around it is transparent */}
-      <div className="glass-panel rounded-2xl px-4 md:px-8 h-14 md:h-20 w-full max-w-5xl flex items-center justify-between border border-white/5 bg-[#0A0D14]/80 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] pointer-events-auto transition-all">
+    <header className="fixed top-0 inset-x-0 z-50 bg-[#07090E]/80 backdrop-blur-2xl border-b border-white/[0.05]">
+      {/* Container height reduced from h-20 to h-16 on mobile (md:h-20) */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between relative z-50">
         
         {/* 1. Logo & Name */}
-        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 shrink group relative z-10 min-w-0">
-          <span className="font-bold text-base md:text-xl tracking-tight text-white group-hover:text-cyan-400 transition-colors truncate">
-            chamathka<span className="text-cyan-400">.dev</span>
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 md:gap-4 group shrink-0">
+          {/* Logo container scaled down on mobile (w-10 h-10) */}
+          <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center group-hover:border-cyan-500/40 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300 shrink-0 overflow-hidden">
+            <Image 
+              src="/images/mylogo.svg" 
+              alt="Logo" 
+              width={80} 
+              height={80} 
+              className="w-8 h-8 md:w-14 md:h-14 object-contain scale-150" 
+            />
+          </div>
+          {/* Name font size and tracking tightened for mobile */}
+          <span className="font-bold text-[10px] xs:text-xs md:text-xl tracking-[0.1em] md:tracking-[0.2em] text-white group-hover:text-cyan-100 transition-colors uppercase">
+            CHAMATHKA ADDARAGE
           </span>
         </Link>
 
         {/* 2. Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300 absolute left-1/2 -translate-x-1/2">
-          <Link href="#about" className="hover:text-white hover:-translate-y-0.5 transition-all">About</Link>
-          <Link href="#skills" className="hover:text-white hover:-translate-y-0.5 transition-all">Tech Stack</Link>
-          <Link href="#projects" className="hover:text-white hover:-translate-y-0.5 transition-all">Projects</Link>
-          <Link href="#experience" className="hover:text-white hover:-translate-y-0.5 transition-all">Timeline</Link>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400 tracking-wide">
+          <Link href="#about" className="hover:text-white transition-colors">About</Link>
+          <Link href="#projects" className="hover:text-white transition-colors">Projects</Link>
+          <Link href="#contact" className="px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/10 hover:bg-white/10 hover:text-white hover:-translate-y-0.5 active:scale-95 transition-all duration-300">
+            Let's Talk
+          </Link>
         </nav>
 
-        {/* 3. CTA & Mobile Toggle */}
-        <div className="flex items-center gap-3 relative z-10 shrink-0">
-          
-          <Link href="#contact" className="hidden md:flex px-5 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition-all text-sm font-medium">
-            Contact Me
+        {/* 3. Mobile Navigation Controls */}
+        <div className="flex items-center gap-2 md:hidden">
+          <Link 
+            href="#contact" 
+            onClick={() => setIsOpen(false)} 
+            className="px-3 py-1.5 text-[10px] whitespace-nowrap font-bold rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 active:scale-95 transition-all"
+          >
+            LET'S TALK
           </Link>
-
+          
           <button 
             type="button"
             onClick={() => setIsOpen(!isOpen)} 
-            className="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none"
-            aria-expanded={isOpen}
+            className="p-1.5 text-slate-300 hover:text-white transition-colors focus:outline-none"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* --- MOBILE DROPDOWN MENU --- */}
       {isOpen && (
-        <div className="md:hidden fixed top-20 left-4 right-4 glass-panel rounded-2xl border border-white/5 bg-[#0A0D14]/98 backdrop-blur-3xl p-6 flex flex-col gap-5 shadow-2xl animate-in slide-in-from-top-4 duration-300 pointer-events-auto">
-          <Link href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">About</Link>
-          <Link href="#skills" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Tech Stack</Link>
-          <Link href="#projects" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Projects</Link>
-          <Link href="#experience" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Timeline</Link>
-          <Link href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-cyan-400 pt-2">Contact Me</Link>
+        <div className="md:hidden absolute top-16 left-0 w-full h-[calc(100vh-64px)] bg-[#07090E]/95 backdrop-blur-3xl border-t border-white/5 animate-in slide-in-from-top-2 fade-in duration-200 z-40 overflow-y-auto">
+          <div className="flex flex-col px-6 py-8 gap-6">
+            <Link href="#about" onClick={() => setIsOpen(false)} className="text-xl font-medium text-slate-300 hover:text-cyan-400 transition-colors">
+              About
+            </Link>
+            <Link href="#projects" onClick={() => setIsOpen(false)} className="text-xl font-medium text-slate-300 hover:text-cyan-400 transition-colors">
+              Projects
+            </Link>
+          </div>
         </div>
       )}
     </header>
