@@ -45,7 +45,6 @@ export default async function Home() {
       {/* =========================================
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
-      {/* ---> THE FIX: Reduced mt-28 md:mt-32 down to mt-8 md:mt-12 <--- */}
       <div id="about" className="relative w-full max-w-5xl mx-auto mt-8 md:mt-12 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
@@ -58,7 +57,7 @@ export default async function Home() {
                 Chamathka <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Addarage</span>
               </h1>
               <h2 className="text-lg md:text-xl text-slate-300 font-medium mb-6">
-                Full Stack Developer
+                Full Stack Developer & Senior Executive
               </h2>
               <p className="text-slate-400 font-light leading-relaxed max-w-2xl mb-8 text-sm md:text-base">
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
@@ -228,6 +227,14 @@ export default async function Home() {
             </Link>
           ))}
         </div>
+
+        {/* RESTORED VIEW ALL PROJECTS BUTTON */}
+        <div className="mt-10 flex justify-center">
+          <Link href="/projects" prefetch={false} className="px-6 py-2.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all font-medium text-sm">
+            View All Projects
+          </Link>
+        </div>
+
       </div>
 
       {/* =========================================
