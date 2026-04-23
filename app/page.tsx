@@ -45,7 +45,8 @@ export default async function Home() {
       {/* =========================================
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
-      <div id="about" className="relative w-full max-w-5xl mx-auto mt-28 md:mt-32 px-4 md:px-6 z-10">
+      {/* ---> THE FIX: Reduced mt-28 md:mt-32 down to mt-8 md:mt-12 <--- */}
+      <div id="about" className="relative w-full max-w-5xl mx-auto mt-8 md:mt-12 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-8 items-center">
