@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, Code2, Palette, Zap } from 'lucide-react';
+import { Mail, MessageSquare, Code2, Palette, Zap, Cpu, Briefcase, GraduationCap } from 'lucide-react';
 
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
@@ -86,7 +86,6 @@ export default async function Home() {
         <div className="glass-panel rounded-[2rem] p-8 md:p-16 relative overflow-hidden group/container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 relative z-10 items-center">
             
-            {/* ---> FIX: Added order-2 lg:order-1 <--- */}
             <div className="lg:col-span-7 order-2 lg:order-1">
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
                 Bridging the gap between <span className="text-cyan-400">design</span> and <span className="text-purple-400">logic</span>.
@@ -119,7 +118,6 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* ---> FIX: Added order-1 lg:order-2 mb-8 lg:mb-0 <--- */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
               <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] group cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-[2rem] blur-xl transition-all duration-500 group-hover:-translate-x-4 group-hover:translate-y-4"></div>
@@ -136,6 +134,129 @@ export default async function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* =========================================
+          TECHNOLOGIES SECTION
+          ========================================= */}
+      <div id="skills" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
+        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">Technologies</h2>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 relative z-10">
+          
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Cpu className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">Next.js</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Expert</p>
+          </div>
+
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Code2 className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">React</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
+          </div>
+
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Cpu className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">Node.js</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
+          </div>
+
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Palette className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">Tailwind CSS</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Expert</p>
+          </div>
+
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Zap className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">Supabase</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
+          </div>
+
+          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 hover:border-cyan-500/30 transition-colors group cursor-default">
+            <Palette className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
+            <h4 className="text-white font-semibold">Design</h4>
+            <div className="flex gap-1">
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
+            </div>
+            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
+          </div>
+        </div>
+      </div>
+
+      {/* =========================================
+          CAREER TIMELINE SECTION
+          ========================================= */}
+      <div id="experience" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
+        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">My Journey So Far</h2>
+        
+        <div className="relative z-10 space-y-10 pl-6 border-l-2 border-slate-800 ml-4 before:absolute before:left-[-1px] before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-purple-500 before:to-blue-500 before:shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+          
+          <div className="relative pl-12 group">
+            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all">
+              <Briefcase className="w-5 h-5 text-cyan-400" strokeWidth={1.5}/>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl group-hover:border-cyan-500/30 transition-colors">
+              <span className="text-sm text-cyan-400 font-bold mb-1 block">2023 — Present</span>
+              <h4 className="text-xl font-bold text-white mb-1">Freelance Full Stack Developer</h4>
+              <p className="text-sm text-slate-400 font-medium mb-3">Matara, Sri Lanka</p>
+              <p className="text-xs text-slate-500 font-light leading-relaxed">Designing and developing complete web architectures, including comprehensive e-learning management systems and specialized digital portfolios using Next.js and Supabase.</p>
+            </div>
+          </div>
+
+          <div className="relative pl-12 group">
+            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.5)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.8)] transition-all">
+              <Palette className="w-5 h-5 text-purple-400" strokeWidth={1.5}/>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl group-hover:border-purple-500/30 transition-colors">
+              <span className="text-sm text-purple-400 font-bold mb-1 block">2021 — 2023</span>
+              <h4 className="text-xl font-bold text-white mb-1">Web Designer & Brand Strategist</h4>
+              <p className="text-sm text-slate-400 font-medium mb-3">Freelance</p>
+              <p className="text-xs text-slate-500 font-light leading-relaxed">Spearheaded aesthetic direction, custom branding, and social media marketing graphics for local businesses and upcoming startups.</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
