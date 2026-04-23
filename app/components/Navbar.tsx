@@ -25,10 +25,8 @@ export default function Navbar() {
   }
 
   return (
-    // FIX 1: Added w-full and px-4 for mobile safety
     <header className="fixed top-4 md:top-8 left-0 right-0 w-full px-4 z-[100] flex justify-center pointer-events-none">
       
-      {/* FIX 2: Added pointer-events-auto so clicks work on the pill, but space around it is transparent */}
       <div className="glass-panel rounded-2xl px-4 md:px-8 h-14 md:h-20 w-full max-w-5xl flex items-center justify-between border border-white/5 bg-[#0A0D14]/80 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] pointer-events-auto transition-all">
         
         {/* 1. Logo & Name */}

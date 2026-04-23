@@ -46,13 +46,25 @@ export default async function Home() {
       {/* =========================================
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
-      <div id="about" className="relative w-full max-w-5xl mx-auto mt-8 md:mt-12 px-4 md:px-6 z-10">
+      <div id="about" className="relative w-full max-w-5xl mx-auto mt-24 md:mt-32 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-8 items-center">
             
-            {/* Text Content */}
-            <div className="order-2 md:order-1">
+            {/* Portrait inside the card - Centered on Mobile */}
+            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+               <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
+                 <Image 
+                    src={settings?.portrait_url || "/images/portrait.jpg"} 
+                    alt="Chamathka Addarage" 
+                    fill 
+                    className="object-cover" 
+                  />
+               </div>
+            </div>
+
+            {/* Text Content - Centered on Mobile, Left on Desktop */}
+            <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
               <p className="text-cyan-400 font-mono text-sm uppercase tracking-widest mb-3">Hi, I'm</p>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
                 Chamathka <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Addarage</span>
@@ -64,8 +76,8 @@ export default async function Home() {
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-3 sm:gap-4 mb-8">
+              {/* Action Buttons - Centered on Mobile */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8">
                 <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm">
                   View Projects
                 </a>
@@ -74,8 +86,8 @@ export default async function Home() {
                 </a>
               </div>
 
-              {/* Social Links */}
-              <div className="flex items-center gap-3">
+              {/* Social Links - Centered on Mobile */}
+              <div className="flex items-center justify-center md:justify-start gap-3">
                 <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all">
                   <FiLinkedin className="w-5 h-5" />
                 </a>
@@ -89,18 +101,6 @@ export default async function Home() {
                   <FiInstagram className="w-5 h-5" />
                 </a>
               </div>
-            </div>
-
-            {/* Portrait inside the card */}
-            <div className="order-1 md:order-2 flex justify-start md:justify-end">
-               <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
-                 <Image 
-                    src={settings?.portrait_url || "/images/portrait.jpg"} 
-                    alt="Chamathka Addarage" 
-                    fill 
-                    className="object-cover" 
-                  />
-               </div>
             </div>
 
           </div>
