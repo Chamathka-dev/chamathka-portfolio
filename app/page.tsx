@@ -6,6 +6,9 @@ import { Mail, MessageSquare, Code2, Palette, Zap } from 'lucide-react';
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
 
+// Force Next.js to always fetch fresh data
+export const dynamic = "force-dynamic";
+
 // 2. Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;

@@ -3,6 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Zap, Code2 } from 'lucide-react';
 
+// ... your other imports ...
+
+// Add this exact line right here:
+export const dynamic = "force-dynamic";
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
