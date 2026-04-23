@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe, Github, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe } from 'lucide-react';
+import { FiGithub, FiLinkedin, FiFacebook, FiInstagram } from 'react-icons/fi';
 
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
@@ -75,16 +76,16 @@ export default async function Home() {
               {/* Social Links */}
               <div className="flex items-center gap-3">
                 <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all" aria-label="LinkedIn">
-                  <Linkedin className="w-5 h-5" />
+                  <FiLinkedin className="w-5 h-5" />
                 </a>
                 <a href="https://github.com/Chamathka-dev" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all" aria-label="GitHub">
-                  <Github className="w-5 h-5" />
+                  <FiGithub className="w-5 h-5" />
                 </a>
                 <a href="https://web.facebook.com/chamathka.online" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 hover:bg-white/10 transition-all" aria-label="Facebook">
-                  <Facebook className="w-5 h-5" />
+                  <FiFacebook className="w-5 h-5" />
                 </a>
                 <a href="https://www.instagram.com/chamathka.addarage" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 hover:bg-white/10 transition-all" aria-label="Instagram">
-                  <Instagram className="w-5 h-5" />
+                  <FiInstagram className="w-5 h-5" />
                 </a>
               </div>
             </div>
