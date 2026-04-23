@@ -23,15 +23,15 @@ export default function RootLayout({
         <Navbar />
 
         {/* --- MAIN CONTENT INJECTION --- */}
-        {/* REDUCED SPACE: Changed from pt-20/32 to pt-14/20 to bring content up */}
-        <div className="pt-14 md:pt-20 min-h-screen flex flex-col">
+        {/* FIX: Removed pt-24/pt-20 to allow exact control in Page.tsx */}
+        <div className="min-h-screen flex flex-col">
           <div className="flex-grow">
             {children}
           </div>
         </div>
 
         {/* --- GLOBAL FOOTER --- */}
-        <footer className="bg-[#0A0D14] relative z-50 pb-12 pt-16">
+        <footer className="bg-[#0A0D14] relative z-50 pb-12 pt-8">
           <div className="max-w-5xl mx-auto px-6 flex flex-col items-center justify-center gap-2 text-sm text-slate-500 font-light text-center">
             <p>Designed & Built by Chamathka Addarage.</p>
             <p>Built with React, Next.js & Tailwind CSS.</p>
