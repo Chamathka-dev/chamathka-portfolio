@@ -37,11 +37,16 @@ export default function Navbar() {
         </Link>
 
         {/* 2. Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-slate-300">
           <Link href="#about" className="hover:text-white hover:-translate-y-0.5 transition-all">About</Link>
           <Link href="#skills" className="hover:text-white hover:-translate-y-0.5 transition-all">Tech Stack</Link>
           <Link href="#projects" className="hover:text-white hover:-translate-y-0.5 transition-all">Projects</Link>
           <Link href="#experience" className="hover:text-white hover:-translate-y-0.5 transition-all">Timeline</Link>
+          
+          {/* THE RESTORED CONTACT BUTTON */}
+          <Link href="#contact" className="ml-2 px-5 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:-translate-y-0.5 transition-all font-medium">
+            Let's Talk
+          </Link>
         </nav>
 
         {/* 3. Mobile Navigation Controls */}
