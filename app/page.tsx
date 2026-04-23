@@ -46,6 +46,7 @@ export default async function Home() {
       {/* =========================================
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
+      {/* FIX: mt-24 ensures clear space below the floating navbar */}
       <div id="about" className="relative w-full max-w-5xl mx-auto mt-24 md:mt-32 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
@@ -63,10 +64,10 @@ export default async function Home() {
                </div>
             </div>
 
-            {/* Text Content - Centered on Mobile, Left on Desktop */}
+            {/* Text Content - Centered on Mobile for better balance */}
             <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
-              <p className="text-cyan-400 font-mono text-sm uppercase tracking-widest mb-3">Hi, I'm</p>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+              <p className="text-cyan-400 font-mono text-xs md:text-sm uppercase tracking-widest mb-3">Hi, I'm</p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
                 Chamathka <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Addarage</span>
               </h1>
               <h2 className="text-lg md:text-xl text-slate-300 font-medium mb-6">
@@ -76,17 +77,17 @@ export default async function Home() {
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
               </p>
 
-              {/* Action Buttons - Centered on Mobile */}
+              {/* Action Buttons - Flexible wrap */}
               <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8">
-                <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm">
+                <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm whitespace-nowrap">
                   View Projects
                 </a>
-                <a href="#contact" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all font-medium text-sm">
+                <a href="#contact" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all font-medium text-sm whitespace-nowrap">
                   Contact Me
                 </a>
               </div>
 
-              {/* Social Links - Centered on Mobile */}
+              {/* Social Links */}
               <div className="flex items-center justify-center md:justify-start gap-3">
                 <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all">
                   <FiLinkedin className="w-5 h-5" />
@@ -250,7 +251,7 @@ export default async function Home() {
             
             {/* Entry 1 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)] transition-all"></div>
               <div className="transition-all duration-300">
                 <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 uppercase tracking-wider border border-cyan-500/20">May 2024 — Oct 2025</span>
                 <h4 className="text-lg font-bold text-white mb-1">Senior Executive - Web Specialist</h4>
@@ -261,7 +262,7 @@ export default async function Home() {
 
             {/* Entry 2 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)] transition-all"></div>
               <div className="transition-all duration-300">
                 <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 uppercase tracking-wider border border-purple-500/20">Aug 2022 — Mar 2024</span>
                 <h4 className="text-lg font-bold text-white mb-1">Full Stack Developer</h4>
@@ -272,7 +273,7 @@ export default async function Home() {
 
             {/* Entry 3 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)] transition-all"></div>
               <div className="transition-all duration-300">
                 <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-[10px] text-cyan-400 font-mono font-bold mb-3 uppercase tracking-wider border border-cyan-500/20">Jun 2021 — Jul 2022</span>
                 <h4 className="text-lg font-bold text-white mb-1">Social Media Strategist</h4>
@@ -283,7 +284,7 @@ export default async function Home() {
 
             {/* Entry 4 */}
             <div className="relative pl-6 sm:pl-8 group">
-              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+              <div className="absolute left-[-33px] top-1 w-4 h-4 rounded-full border-[3px] border-[#0A0D14] bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)] transition-all"></div>
               <div className="transition-all duration-300">
                 <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-[10px] text-purple-400 font-mono font-bold mb-3 uppercase tracking-wider border border-purple-500/20">Jan 2019 — Present</span>
                 <h4 className="text-lg font-bold text-white mb-1">Web Developer, SEO / Marketing Specialist</h4>
