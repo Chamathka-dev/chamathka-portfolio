@@ -30,31 +30,33 @@ export default function Navbar() {
       <div className="glass-panel rounded-2xl px-6 md:px-8 h-16 md:h-20 flex items-center justify-between border border-white/5 bg-[#0A0D14]/80 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] transition-all">
         
         {/* 1. Logo & Name */}
-        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 shrink-0 group">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 shrink-0 group relative z-10">
           <span className="font-bold text-lg md:text-xl tracking-wide text-white group-hover:text-cyan-400 transition-colors">
             chamathka<span className="text-cyan-400">.dev</span>
           </span>
         </Link>
 
-        {/* 2. Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-slate-300">
+        {/* 2. Desktop Navigation Links (Centered) */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300 absolute left-1/2 -translate-x-1/2">
           <Link href="#about" className="hover:text-white hover:-translate-y-0.5 transition-all">About</Link>
           <Link href="#skills" className="hover:text-white hover:-translate-y-0.5 transition-all">Tech Stack</Link>
           <Link href="#projects" className="hover:text-white hover:-translate-y-0.5 transition-all">Projects</Link>
           <Link href="#experience" className="hover:text-white hover:-translate-y-0.5 transition-all">Timeline</Link>
-          
-          {/* THE RESTORED CONTACT BUTTON */}
-          <Link href="#contact" className="ml-2 px-5 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:-translate-y-0.5 transition-all font-medium">
-            Let's Talk
-          </Link>
         </nav>
 
-        {/* 3. Mobile Navigation Controls */}
-        <div className="flex items-center md:hidden">
+        {/* 3. Desktop CTA & Mobile Menu Toggle */}
+        <div className="flex items-center gap-4 relative z-10">
+          
+          {/* Desktop Contact Button */}
+          <Link href="#contact" className="hidden md:flex px-5 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:-translate-y-0.5 active:scale-95 transition-all text-sm font-medium shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+            Contact Me
+          </Link>
+
+          {/* Mobile Toggle */}
           <button 
             type="button"
             onClick={() => setIsOpen(!isOpen)} 
-            className="p-2 -mr-2 text-slate-300 hover:text-white transition-colors focus:outline-none"
+            className="md:hidden p-2 -mr-2 text-slate-300 hover:text-white transition-colors focus:outline-none"
             aria-expanded={isOpen}
             aria-label="Toggle menu"
           >
