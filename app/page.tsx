@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe } from 'lucide-react';
+import { Mail, MessageSquare, Briefcase, Code2, TrendingUp, Globe, Github, Linkedin, Facebook, Instagram } from 'lucide-react';
 
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
@@ -62,12 +62,29 @@ export default async function Home() {
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4 mb-6">
                 <a href="#projects" className="px-6 py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm">
                   View Projects
                 </a>
                 <a href="#contact" className="px-6 py-2.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all font-medium text-sm">
                   Contact Me
+                </a>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all" aria-label="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://github.com/Chamathka-dev" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all" aria-label="GitHub">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href="https://web.facebook.com/chamathka.online" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 hover:bg-white/10 transition-all" aria-label="Facebook">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="https://www.instagram.com/chamathka.addarage" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 hover:bg-white/10 transition-all" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
                 </a>
               </div>
             </div>
