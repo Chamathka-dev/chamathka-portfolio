@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, Code2, Palette, Zap, Cpu, Briefcase, Globe, Database, Monitor, Server, TrendingUp } from 'lucide-react';
+import { Mail, MessageSquare } from 'lucide-react';
 
 // 1. Import your Client Component
 import ContactForm from "./components/ContactForm";
@@ -41,36 +41,32 @@ export default async function Home() {
   const titleParts = fullTitle.includes(',') ? fullTitle.split(',') : [fullTitle, ""];
 
   return (
-    <main className="relative z-10 flex flex-col items-center w-full overflow-hidden">
+    <main className="relative z-10 flex flex-col items-center w-full overflow-hidden bg-[#050505]">
       
       {/* =========================================
-          1. HERO SECTION
+          1. HERO SECTION (EDITORIAL STYLE)
           ========================================= */}
-      <div className="relative w-full max-w-5xl mx-auto mt-12 md:mt-16 text-center flex flex-col items-center px-6 pt-8 md:pt-12 pb-20">
-        
-        {/* Animated Background Effects */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-grid-pattern"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-900/20 rounded-full blur-[120px]"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-purple-900/20 rounded-full blur-[100px]"></div>
-        </div>
-
+      <div className="relative w-full max-w-5xl mx-auto mt-20 md:mt-32 text-center flex flex-col items-center px-6 pt-8 md:pt-12 pb-20">
         <div className="relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-white drop-shadow-2xl leading-tight">
+          
+          {/* Magazine-style Heading */}
+          <h1 className="text-5xl md:text-7xl font-serif tracking-tight mb-8 text-white leading-tight">
             {titleParts[0].trim()}{titleParts[1] && ","} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
+            <span className="italic text-slate-400 font-light">
               {titleParts[1]?.trim()}
             </span>
           </h1>
-          <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            {settings?.hero_subtitle}
+          
+          <p className="text-sm text-slate-400 mb-12 max-w-xl mx-auto font-mono uppercase tracking-[0.2em] leading-relaxed">
+            {settings?.hero_subtitle || "Full-stack developer blending professional visual design with high-performance engineering."}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href="#projects" className="glass-panel px-8 py-4 rounded-full text-white font-medium hover:-translate-y-1.5 active:scale-95 transition-all duration-300 border-cyan-500/30 hover:shadow-[0_0_40px_rgba(6,182,212,0.4)]">
+          {/* Sharp, Brutalist Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="#projects" className="px-8 py-4 border border-white text-white font-mono text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors duration-300">
               Explore Work
             </a>
-            <a href="#contact" className="glass-panel px-8 py-4 rounded-full text-white font-medium hover:-translate-y-1.5 active:scale-95 transition-all duration-300 border-purple-500/30 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]">
+            <a href="#contact" className="px-8 py-4 border border-white/20 text-slate-300 font-mono text-xs uppercase tracking-[0.2em] hover:border-white transition-colors duration-300">
               Discuss a Project
             </a>
           </div>
@@ -78,381 +74,167 @@ export default async function Home() {
       </div>
 
       {/* =========================================
-          2. ABOUT SECTION
+          2. ABOUT SECTION (MINIMALIST)
           ========================================= */}
       <div id="about" className="relative max-w-7xl w-full px-6 mt-20 pt-20">
-        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">The Architect</h2>
-        
-        <div className="glass-panel rounded-[2rem] p-8 md:p-16 relative overflow-hidden group/container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 relative z-10 items-center">
+        <div className="border-t border-white/20 pt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                Bridging the gap between <span className="text-cyan-400">design</span> and <span className="text-purple-400">logic</span>.
-              </h3>
-              <p className="text-slate-400 leading-relaxed font-light text-lg mb-6">{settings?.about_bio_1}</p>
-              <p className="text-slate-400 leading-relaxed font-light text-lg mb-10">{settings?.about_bio_2}</p>
-              
-              <div className="space-y-4">
-                <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex items-start gap-4">
-                  <Code2 className="w-6 h-6 text-cyan-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Modern Engineering</h4>
-                    <p className="text-sm text-slate-500 font-light">{settings?.about_modern_eng}</p>
-                  </div>
-                </div>
-                <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex items-start gap-4">
-                  <Palette className="w-6 h-6 text-purple-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Aesthetic Precision</h4>
-                    <p className="text-sm text-slate-500 font-light">{settings?.about_aesthetic_prec}</p>
-                  </div>
-                </div>
-                <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex items-start gap-4">
-                  <Zap className="w-6 h-6 text-blue-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Fluid Interactions</h4>
-                    <p className="text-sm text-slate-500 font-light">{settings?.about_fluid_int}</p>
-                  </div>
-                </div>
+            <div className="lg:col-span-5 order-1">
+              <div className="relative w-full aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700 border border-white/10">
+                <Image 
+                  src={settings?.portrait_url || "/images/portrait.jpg"} 
+                  alt="Portrait" 
+                  fill 
+                  className="object-cover" 
+                />
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
-              <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] group cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-[2rem] blur-xl transition-all duration-500 group-hover:-translate-x-4 group-hover:translate-y-4"></div>
-                <div className="absolute inset-0 border border-white/10 rounded-[2rem] z-10 transition-all duration-500 group-hover:translate-x-4 group-hover:-translate-y-4"></div>
-                <div className="absolute inset-0 rounded-[2rem] overflow-hidden bg-[#0A0D14] border border-white/10 z-20 shadow-2xl">
-                  <Image 
-                    src={settings?.portrait_url || "/images/portrait.jpg"} 
-                    alt="Portrait" 
-                    fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-110" 
-                  />
-                  <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] pointer-events-none"></div>
-                </div>
+            <div className="lg:col-span-7 order-2 flex flex-col justify-center h-full">
+              <h2 className="text-xs font-mono mb-8 text-slate-400 tracking-[0.3em] uppercase">The Architect</h2>
+              <h3 className="text-3xl md:text-4xl font-serif text-white mb-8 leading-snug">
+                Bridging the gap between <br/><span className="italic text-slate-400">design and logic.</span>
+              </h3>
+              <div className="space-y-6 text-slate-400 font-light text-lg leading-relaxed max-w-2xl">
+                <p>{settings?.about_bio_1}</p>
+                <p>{settings?.about_bio_2}</p>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
       {/* =========================================
-          TECHNOLOGIES SECTION
+          3. TECHNOLOGIES SECTION (GRID LIST)
           ========================================= */}
       <div id="skills" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
-        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">Technologies</h2>
+        <h2 className="text-xs font-mono mb-10 text-slate-400 tracking-[0.3em] uppercase border-b border-white/20 pb-4">Technologies</h2>
         
-        {/* Now a perfect 2-row grid on desktop (12 items) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 relative z-10">
-          
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Cpu className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Next.js</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
+        {/* Stark, crisp 1px borders creating a tight grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-[1px] bg-white/20 border border-white/20">
+          {[
+            { name: "Next.js", level: "Expert" },
+            { name: "React", level: "Advanced" },
+            { name: "JavaScript", level: "Advanced" },
+            { name: "TypeScript", level: "Advanced" },
+            { name: "Vue", level: "Intermediate" },
+            { name: "Node.js", level: "Advanced" },
+            { name: "PHP", level: "Intermediate" },
+            { name: "Laravel", level: "Intermediate" },
+            { name: "Tailwind CSS", level: "Expert" },
+            { name: "Supabase", level: "Advanced" },
+            { name: "WordPress", level: "Advanced" },
+            { name: "SEO", level: "Expert" }
+          ].map((tech) => (
+            <div key={tech.name} className="bg-[#050505] p-6 flex flex-col justify-center items-center text-center hover:bg-white hover:text-black transition-colors duration-300 group cursor-default">
+              <h4 className="font-serif text-lg mb-2 text-white group-hover:text-black transition-colors">{tech.name}</h4>
+              <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest group-hover:text-black/60 transition-colors">{tech.level}</p>
             </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Expert</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <Code2 className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">React</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Code2 className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">JavaScript</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <Code2 className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">TypeScript</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Monitor className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Vue</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Intermediate</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <Server className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Node.js</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Code2 className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">PHP</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Intermediate</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <Database className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Laravel</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Intermediate</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Palette className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Tailwind CSS</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Expert</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <Zap className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">Supabase</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)] group cursor-default">
-            <Globe className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">WordPress</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-white/10 border border-white/10"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Advanced</p>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-5 flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)] group cursor-default">
-            <TrendingUp className="w-8 h-8 text-purple-400 group-hover:animate-pulse" strokeWidth={1}/>
-            <h4 className="text-white font-semibold">SEO</h4>
-            <div className="flex gap-1">
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-              <div className="w-3 h-1.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-            </div>
-            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Expert</p>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* =========================================
-          3. SELECTED WORK GRID
+          4. CAREER TIMELINE (EDITORIAL)
+          ========================================= */}
+      <div id="experience" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
+        <h2 className="text-xs font-mono mb-10 text-slate-400 tracking-[0.3em] uppercase border-b border-white/20 pb-4">My Journey So Far</h2>
+        
+        <div className="relative space-y-12 pl-4 border-l border-white/20 ml-2">
+          
+          {[
+            { date: "May 2024 — Oct 2025", title: "Senior Executive - Web Specialist", company: "Ikman.lk | Colombo, Sri Lanka", desc: "Engineered high-performance, SEO-friendly web applications using React and Next.js. Developed robust backend services and integrated real-time database and authentication solutions using Node.js and Supabase." },
+            { date: "Aug 2022 — Mar 2024", title: "Full Stack Developer", company: "Precision Enterprises Inc | New York, USA", desc: "Led the end-to-end development and redesign of the company website, significantly increasing user engagement and SEO rankings. Developed and maintained custom full-stack web applications." },
+            { date: "Jun 2021 — Jul 2022", title: "Social Media Strategist", company: "Lyceum International Schools | Nugegoda, Sri Lanka", desc: "Developed cross-platform social media strategies to increase brand visibility. Tracked performance metrics using Google Analytics and social insights to optimize future strategies." },
+            { date: "Jan 2019 — Present", title: "Web Developer & SEO Specialist", company: "Freelance", desc: "Architected and deployed custom web applications and administrative dashboards using Next.js, React, and Supabase. Boosted organic traffic for global clients by conducting comprehensive SEO audits." }
+          ].map((job, i) => (
+            <div key={i} className="relative pl-10 group">
+              {/* Stark white square node instead of glowing circles */}
+              <div className="absolute left-[-21px] top-1.5 w-2 h-2 bg-white outline outline-4 outline-[#050505] group-hover:scale-150 transition-transform duration-300"></div>
+              
+              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2 block">{job.date}</span>
+              <h4 className="text-2xl font-serif text-white mb-1 group-hover:text-slate-300 transition-colors">{job.title}</h4>
+              <p className="text-xs font-mono text-slate-400 mb-4">{job.company}</p>
+              <p className="text-sm text-slate-400 font-light leading-relaxed max-w-3xl">{job.desc}</p>
+            </div>
+          ))}
+
+        </div>
+      </div>
+
+      {/* =========================================
+          5. SELECTED WORK GRID (SHARP EDGES)
           ========================================= */}
       <div id="projects" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
-        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">Selected Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <h2 className="text-xs font-mono mb-10 text-slate-400 tracking-[0.3em] uppercase border-b border-white/20 pb-4">Selected Work</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects?.map((project) => (
             <Link href={`/projects/${project.slug}`} key={project.id} prefetch={false} className="block group">
-              <div className="glass-panel rounded-3xl p-3 md:p-4 h-full transition-all duration-500 hover:-translate-y-2 relative overflow-hidden flex flex-col group-hover:bg-white/[0.05]">
-                <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0D14] mb-5">
-                   <div className="absolute top-0 inset-x-0 h-8 bg-white/[0.02] backdrop-blur-md border-b border-white/5 flex items-center px-4 gap-1.5 z-20">
-                    <div className="w-2 h-2 rounded-full bg-white/20"></div>
-                    <div className="w-2 h-2 rounded-full bg-white/20"></div>
-                    <div className="w-2 h-2 rounded-full bg-white/20"></div>
-                  </div>
-                  <div className="absolute inset-0 pt-8 z-10 overflow-hidden">
-                    {project.image_url && (
-                      <Image 
-                        src={project.image_url} 
-                        alt={project.title} 
-                        fill 
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105" 
-                      />
-                    )}
-                  </div>
+              <div className="flex flex-col h-full">
+                
+                {/* Image Container - Grayscale by default, color on hover */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0A0A0A] border border-white/10 mb-6 grayscale group-hover:grayscale-0 transition-all duration-700">
+                  {project.image_url && (
+                    <Image 
+                      src={project.image_url} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover object-top transition-transform duration-1000 group-hover:scale-105" 
+                    />
+                  )}
                 </div>
                 
-                <div className="px-3 pb-2 flex flex-col flex-grow justify-between">
+                {/* Text Content */}
+                <div className="flex flex-col flex-grow justify-between">
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors">{project.title}</h3>
+                      <h3 className="text-2xl font-serif text-white mb-3 group-hover:underline underline-offset-4 decoration-1">{project.title}</h3>
                       <p className="text-sm text-slate-400 line-clamp-3 font-light leading-relaxed">{project.short_description}</p>
                     </div>
                     
                     <div className="flex flex-wrap gap-2 mt-6">
                       {project.tech_stack?.map((tech: string) => (
-                        <span key={tech} className="text-[10px] font-bold tracking-wide uppercase px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 backdrop-blur-md whitespace-nowrap hover:border-cyan-500/30 hover:text-cyan-400 transition-colors cursor-default">
+                        <span key={tech} className="text-[9px] font-mono uppercase tracking-widest text-slate-500 border border-white/10 px-2 py-1 whitespace-nowrap">
                           {tech}
                         </span>
-                      )) || (
-                        <span className="text-[10px] text-slate-600 font-light italic">Details pending</span>
-                      )}
+                      ))}
                     </div>
                 </div>
               </div>
             </Link>
           ))}
         </div>
+
         <div className="mt-20 flex justify-center">
-          <Link href="/projects" prefetch={false} className="group flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:-translate-y-1.5 transition-all duration-300 text-slate-300 hover:text-white shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-            <span className="text-sm font-medium tracking-wide">View All Projects</span>
-            <Zap className="w-4 h-4 group-hover:text-cyan-400" />
+          <Link href="/projects" prefetch={false} className="px-8 py-4 border border-white/20 text-slate-300 font-mono text-xs uppercase tracking-[0.2em] hover:border-white hover:text-white transition-colors duration-300">
+            View All Projects
           </Link>
         </div>
       </div>
 
       {/* =========================================
-          CAREER TIMELINE SECTION
+          6. CONTACT SECTION
           ========================================= */}
-      <div id="experience" className="relative max-w-7xl w-full px-6 mt-32 pt-10">
-        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">My Journey So Far</h2>
-        
-        <div className="relative z-10 space-y-10 pl-6 border-l-2 border-slate-800 ml-4 before:absolute before:left-[-1px] before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-cyan-500 before:via-purple-500 before:to-blue-500 before:shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+      <div id="contact" className="relative max-w-7xl w-full px-6 mt-32 mb-32 pt-10 border-t border-white/20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 pt-10">
           
-          <div className="relative pl-12 group">
-            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all">
-              <Briefcase className="w-5 h-5 text-cyan-400" strokeWidth={1.5}/>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)]">
-              <span className="text-sm text-cyan-400 font-bold mb-1 block">May 2024 — Oct 2025</span>
-              <h4 className="text-xl font-bold text-white mb-1">Senior Executive - Web Specialist</h4>
-              <p className="text-sm text-slate-400 font-medium mb-3">Ikman.lk | Colombo, Sri Lanka</p>
-              <p className="text-xs text-slate-500 font-light leading-relaxed">Engineered high-performance, SEO-friendly web applications using React and Next.js. Developed robust backend services and integrated real-time database and authentication solutions using Node.js and Supabase.</p>
-            </div>
-          </div>
-
-          <div className="relative pl-12 group">
-            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.5)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.8)] transition-all">
-              <Code2 className="w-5 h-5 text-purple-400" strokeWidth={1.5}/>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)]">
-              <span className="text-sm text-purple-400 font-bold mb-1 block">Aug 2022 — Mar 2024</span>
-              <h4 className="text-xl font-bold text-white mb-1">Full Stack Developer</h4>
-              <p className="text-sm text-slate-400 font-medium mb-3">Precision Enterprises Inc | New York, USA</p>
-              <p className="text-xs text-slate-500 font-light leading-relaxed">Led the end-to-end development and redesign of the company website, significantly increasing user engagement and SEO rankings. Developed and maintained custom full-stack web applications.</p>
-            </div>
-          </div>
-
-          <div className="relative pl-12 group">
-            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all">
-              <TrendingUp className="w-5 h-5 text-cyan-400" strokeWidth={1.5}/>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-cyan-500/30 hover:shadow-[0_10px_30px_-15px_rgba(6,182,212,0.3)]">
-              <span className="text-sm text-cyan-400 font-bold mb-1 block">Jun 2021 — Jul 2022</span>
-              <h4 className="text-xl font-bold text-white mb-1">Social Media Strategist</h4>
-              <p className="text-sm text-slate-400 font-medium mb-3">Lyceum International Schools | Nugegoda, Sri Lanka</p>
-              <p className="text-xs text-slate-500 font-light leading-relaxed">Developed cross-platform social media strategies to increase brand visibility. Tracked performance metrics using Google Analytics and social insights to optimize future strategies.</p>
-            </div>
-          </div>
-
-          <div className="relative pl-12 group">
-            <div className="absolute left-[-26px] top-1 w-12 h-12 rounded-full border-4 border-slate-900 bg-black flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.5)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.8)] transition-all">
-              <Globe className="w-5 h-5 text-purple-400" strokeWidth={1.5}/>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.05] hover:border-purple-500/30 hover:shadow-[0_10px_30px_-15px_rgba(168,85,247,0.3)]">
-              <span className="text-sm text-purple-400 font-bold mb-1 block">Jan 2019 — Present</span>
-              <h4 className="text-xl font-bold text-white mb-1">Web Developer, SEO / Marketing Specialist</h4>
-              <p className="text-sm text-slate-400 font-medium mb-3">Freelance</p>
-              <p className="text-xs text-slate-500 font-light leading-relaxed">Architected and deployed custom web applications and administrative dashboards using Next.js, React, and Supabase. Boosted organic traffic for global clients by conducting comprehensive SEO audits.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* =========================================
-          4. CONTACT SECTION
-          ========================================= */}
-      <div id="contact" className="relative max-w-7xl w-full px-6 mt-32 mb-32 pt-10">
-        <h2 className="text-sm font-bold mb-10 text-slate-400 tracking-[0.3em] uppercase text-center relative z-10">Initiate a Project</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 relative z-10">
-          
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            <div className="glass-panel rounded-3xl p-8 h-full flex flex-col justify-center relative overflow-hidden group">
-              <h3 className="text-2xl font-bold text-white mb-2">Let's talk directly.</h3>
-              <p className="text-slate-400 font-light mb-8">Skip the form. Send me a message on WhatsApp for the fastest response.</p>
-              
-              <a 
-                href={`https://wa.me/${settings?.contact_whatsapp?.replace(/\+/g, '').replace(/\s/g, '')}`} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="inline-flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold transition-all hover:-translate-y-1 active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-              >
-                <MessageSquare className="w-5 h-5" /> Chat on WhatsApp
+          <div className="flex flex-col justify-center">
+            <h2 className="text-5xl font-serif text-white mb-6">Let's talk directly.</h2>
+            <p className="text-slate-400 font-light mb-10 text-lg leading-relaxed max-w-md">
+              Skip the form. Send me a message on WhatsApp for the fastest response, or drop an email to discuss your next big idea.
+            </p>
+            
+            <div className="space-y-6 font-mono text-sm uppercase tracking-widest text-white">
+              <a href={`https://wa.me/${settings?.contact_whatsapp?.replace(/\+/g, '').replace(/\s/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-4 hover:text-slate-400 transition-colors w-fit">
+                <MessageSquare className="w-4 h-4" /> WhatsApp
+              </a>
+              <a href={`mailto:${settings?.contact_email}`} className="flex items-center gap-4 hover:text-slate-400 transition-colors w-fit">
+                <Mail className="w-4 h-4" /> {settings?.contact_email}
               </a>
             </div>
-
-            <div className="glass-panel rounded-3xl p-8 flex items-center gap-5">
-              <Mail className="w-5 h-5 text-purple-400" />
-              <div>
-                <p className="text-sm text-slate-500 font-medium mb-1">Email directly at</p>
-                <a href={`mailto:${settings?.contact_email}`} className="text-white hover:text-cyan-400 transition-colors font-medium">
-                  {settings?.contact_email}
-                </a>
-              </div>
-            </div>
           </div>
 
-          <div className="lg:col-span-3 glass-panel rounded-3xl p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-white mb-6">Send an Inquiry</h3>
+          <div className="border border-white/20 p-8 md:p-12">
+            <h3 className="text-xs font-mono text-slate-400 tracking-[0.3em] uppercase mb-8">Send an Inquiry</h3>
             <ContactForm /> 
           </div>
 
