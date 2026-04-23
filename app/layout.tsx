@@ -23,8 +23,8 @@ export default function RootLayout({
         <Navbar />
 
         {/* --- MAIN CONTENT INJECTION --- */}
-        {/* Adjusted padding: pt-20 on mobile, pt-32 on desktop for a cleaner look */}
-        <div className="pt-20 md:pt-32 min-h-screen flex flex-col">
+        {/* REDUCED SPACE: Changed from pt-20/32 to pt-14/20 to bring content up */}
+        <div className="pt-14 md:pt-20 min-h-screen flex flex-col">
           <div className="flex-grow">
             {children}
           </div>

@@ -46,8 +46,8 @@ export default async function Home() {
       {/* =========================================
           1. COMBINED HERO & ABOUT SECTION
           ========================================= */}
-      {/* FIX: mt-24 ensures clear space below the floating navbar */}
-      <div id="about" className="relative w-full max-w-5xl mx-auto mt-24 md:mt-32 px-4 md:px-6 z-10">
+      {/* REDUCED SPACE: Changed mt-24 md:mt-32 to mt-4 md:mt-8 */}
+      <div id="about" className="relative w-full max-w-5xl mx-auto mt-4 md:mt-8 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-8 items-center">
@@ -77,7 +77,7 @@ export default async function Home() {
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
               </p>
 
-              {/* Action Buttons - Flexible wrap */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8">
                 <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all font-medium text-sm whitespace-nowrap">
                   View Projects
