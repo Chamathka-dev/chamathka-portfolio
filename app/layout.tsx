@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// 1. Change Inter to Outfit
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar"; // Importing your new interactive client component
+import Navbar from "./components/Navbar"; 
 
-// Using Inter font for that clean, Apple-like geometric typography
-const inter = Inter({ subsets: ["latin"] });
+// 2. Initialize the new font
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chamathka | Portfolio",
@@ -18,13 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#07090E] text-slate-200 antialiased`}>
-        
-        {/* --- GLOBAL GLASS NAVIGATION BAR --- */}
+      {/* 3. Apply it to the body */}
+      <body className={`${outfit.className} bg-[#07090E] text-slate-200 antialiased`}>
         <Navbar />
-
-        {/* --- MAIN CONTENT INJECTION --- */}
-        {/* The min-h-screen ensures short pages still push the footer to the bottom */}
         <div className="pt-24 min-h-screen flex flex-col">
           <div className="flex-grow">
             {children}
