@@ -57,7 +57,7 @@ export default async function Home() {
                 Chamathka <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Addarage</span>
               </h1>
               <h2 className="text-lg md:text-xl text-slate-300 font-medium mb-6">
-                Full Stack Developer & Senior Executive
+                Full Stack Developer
               </h2>
               <p className="text-slate-400 font-light leading-relaxed max-w-2xl mb-8 text-sm md:text-base">
                 {settings?.about_bio_1 || "Dynamic Full Stack Developer and Senior Executive with a proven track record of architecting scalable web applications and administrative dashboards. Combines technical engineering with deep expertise in SEO, Meta Ad campaigns, and elegant UI/UX design to deliver seamless end-to-end digital solutions."}
