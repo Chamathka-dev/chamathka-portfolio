@@ -44,10 +44,10 @@ export default async function Home() {
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-900/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
 
       {/* =========================================
-          1. HERO SECTION (SPACE REDUCED)
+          1. HERO SECTION (SPACING FIXED)
           ========================================= */}
-      {/* FIX: mt-20 on mobile / mt-28 on desktop makes the card hug the navbar perfectly */}
-      <div id="about" className="relative w-full max-w-5xl mx-auto mt-20 md:mt-28 px-4 md:px-6 z-10">
+      {/* INCREASED GAP: mt-32 on mobile and mt-48 on desktop provides a clean drop below the navbar */}
+      <div id="about" className="relative w-full max-w-5xl mx-auto mt-32 md:mt-48 px-4 md:px-6 z-10">
         <div className="glass-panel rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden border-t-2 border-t-cyan-500/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
           
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_200px] gap-8 items-center">
@@ -68,10 +68,10 @@ export default async function Home() {
               </div>
 
               <div className="flex items-center justify-center md:justify-start gap-3">
-                <a href="https://linkedin.com" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 transition-all"><FiLinkedin size={18} /></a>
-                <a href="https://github.com" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all"><FiGithub size={18} /></a>
-                <a href="https://facebook.com" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 transition-all"><FiFacebook size={18} /></a>
-                <a href="https://instagram.com" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 transition-all"><FiInstagram size={18} /></a>
+                <a href="https://linkedin.com/in/chamathka-addarage-7320b2373/" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:bg-white/10 transition-all"><FiLinkedin size={18} /></a>
+                <a href="https://github.com/Chamathka-dev" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all"><FiGithub size={18} /></a>
+                <a href="https://web.facebook.com/chamathka.online" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-blue-400 transition-all"><FiFacebook size={18} /></a>
+                <a href="https://www.instagram.com/chamathka.addarage" target="_blank" rel="noreferrer" className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-pink-400 transition-all"><FiInstagram size={18} /></a>
               </div>
             </div>
 

@@ -23,7 +23,6 @@ export default function RootLayout({
         <Navbar />
 
         {/* --- MAIN CONTENT INJECTION --- */}
-        {/* FIX: Removed pt-24/pt-20 to allow exact control in Page.tsx */}
         <div className="min-h-screen flex flex-col">
           <div className="flex-grow">
             {children}
