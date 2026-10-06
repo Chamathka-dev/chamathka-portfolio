@@ -24,6 +24,9 @@ export default function Navbar() {
     return null;
   }
 
+  // Check if we are on the new Meta Ads landing page
+  const isMetaAds = pathname.startsWith("/meta-ads");
+
   return (
     <header className="fixed top-4 md:top-8 left-0 right-0 w-full px-4 z-[100] flex justify-center pointer-events-none">
       
@@ -38,10 +41,21 @@ export default function Navbar() {
 
         {/* 2. Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300 absolute left-1/2 -translate-x-1/2">
-          <Link href="#about" className="hover:text-white hover:-translate-y-0.5 transition-all">About</Link>
-          <Link href="#skills" className="hover:text-white hover:-translate-y-0.5 transition-all">Tech Stack</Link>
-          <Link href="#projects" className="hover:text-white hover:-translate-y-0.5 transition-all">Projects</Link>
-          <Link href="#experience" className="hover:text-white hover:-translate-y-0.5 transition-all">Timeline</Link>
+          {isMetaAds ? (
+            <>
+              {/* Links to show ONLY on the Meta Ads page */}
+              <Link href="/" className="hover:text-white hover:-translate-y-0.5 transition-all">Main Portfolio</Link>
+              <Link href="#contact" className="hover:text-white hover:-translate-y-0.5 transition-all">Contact</Link>
+            </>
+          ) : (
+            <>
+              {/* Links to show on the Main Homepage */}
+              <Link href="#about" className="hover:text-white hover:-translate-y-0.5 transition-all">About</Link>
+              <Link href="#skills" className="hover:text-white hover:-translate-y-0.5 transition-all">Tech Stack</Link>
+              <Link href="#projects" className="hover:text-white hover:-translate-y-0.5 transition-all">Projects</Link>
+              <Link href="#experience" className="hover:text-white hover:-translate-y-0.5 transition-all">Timeline</Link>
+            </>
+          )}
         </nav>
 
         {/* 3. CTA & Mobile Toggle */}
@@ -65,11 +79,22 @@ export default function Navbar() {
       {/* --- MOBILE DROPDOWN MENU --- */}
       {isOpen && (
         <div className="md:hidden fixed top-20 left-4 right-4 glass-panel rounded-2xl border border-white/5 bg-[#0A0D14]/98 backdrop-blur-3xl p-6 flex flex-col gap-5 shadow-2xl animate-in slide-in-from-top-4 duration-300 pointer-events-auto">
-          <Link href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">About</Link>
-          <Link href="#skills" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Tech Stack</Link>
-          <Link href="#projects" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Projects</Link>
-          <Link href="#experience" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Timeline</Link>
-          <Link href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-cyan-400 pt-2">Contact Me</Link>
+          {isMetaAds ? (
+            <>
+              {/* Mobile links for Meta Ads page */}
+              <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Main Portfolio</Link>
+              <Link href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-cyan-400 pt-2">Contact Me</Link>
+            </>
+          ) : (
+            <>
+              {/* Mobile links for Main Homepage */}
+              <Link href="#about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">About</Link>
+              <Link href="#skills" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Tech Stack</Link>
+              <Link href="#projects" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Projects</Link>
+              <Link href="#experience" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-300 border-b border-white/5 pb-2">Timeline</Link>
+              <Link href="#contact" onClick={() => setIsOpen(false)} className="text-lg font-bold text-cyan-400 pt-2">Contact Me</Link>
+            </>
+          )}
         </div>
       )}
     </header>
